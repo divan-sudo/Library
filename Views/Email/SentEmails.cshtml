@@ -1,0 +1,25 @@
+﻿@using Library.Services
+@using static Library.Services.EmailService
+@model IEnumerable<EmailMessage>
+
+<h2>Sent Emails</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Sent At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var email in Model)
+        {
+            <tr>
+                <td>@email.To</td>
+                <td>@email.Subject</td>
+                <td>@email.SentAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

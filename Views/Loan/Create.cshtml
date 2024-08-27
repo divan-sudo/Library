@@ -1,0 +1,49 @@
+﻿@model Library.Models.Loan
+
+<h1>Create Loan</h1>
+<hr />
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row pt-3">
+        <div class="col-md-4 form-group">
+            <label asp-for="BookId"  class="control-label"></label>
+            <select asp-for="BookId" asp-items="@(ViewBag.BookId as SelectList)" class="form-control">
+                <option value="">-- Select Book --</option>
+            </select>
+            <span asp-validation-for="BookId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="UserId" class="control-label"></label>
+            <select asp-for="UserId" asp-items="@(ViewBag.UserId as SelectList)" class="form-control">
+                <option value="">-- Select User --</option>
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-md-4 form-group">
+            <label asp-for="LoanDate" class="control-label"></label>
+            <input asp-for="LoanDate" class="form-control" />
+            <span asp-validation-for="LoanDate" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="DueDate" class="control-label"></label>
+            <input asp-for="DueDate" class="form-control" />
+            <span asp-validation-for="DueDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            <a asp-route="bookIndex" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

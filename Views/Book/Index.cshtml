@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Library.Models.Book>
+
+<h1 class="mb-3">Books</h1>
+<hr />
+
+@if (!Model.Any())
+{
+    <p>No books found.</p>
+}
+else
+{
+    <a asp-route="bookCreate" class="btn btn-primary my-3"><i class="bi bi-plus-circle"></i> Create New Book</a>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.Author</h6>
+                    <p class="card-text">ISBN: @item.ISBN</p>
+                </div>
+                <div class="card-footer">
+                    <a asp-route="bookEdit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Edit</a>
+                    <a asp-route="bookDetails" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info"><i class="bi bi-info-circle"></i> Details</a>
+                    <a asp-route="bookDelete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+}
